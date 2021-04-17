@@ -10,4 +10,4 @@ We're constantly updating this frontend for being overall secure! It's only secu
 
 ## Reporting a Vulnerability
 
-Feel Free to report an issue with a "security" label, so I can fix it! Please keep the issue template in mind, while reporting!
+Feel Free to report an security-issue with a "security" label, so I can fix it! Please keep the issue template in mind, while reporting!
