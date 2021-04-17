@@ -1,43 +1,38 @@
 layout:
-  - 'layout/**/*'
+  - 'src/layout/**/*'
 
-page:
-  - 'pages/**/*'
+view:
+  - 'src/views/**/*'
 
 component:
-  - 'components/**/*'
+  - 'src/components/**/*'
 
 config:
-  - 'config/**/*'
+  - 'src/config/**/*'
 
 plugin:
-  - 'plugin/**/*'
+  - 'src/plugin/**/*'
 
 store:
-  - 'store/**/*'
+  - 'src/store/**/*'
 
 middleware:
-  - 'middleware/**/*'
+  - 'src/middleware/**/*'
 
 content:
-  - 'content/**/*'
+  - 'src/content/**/*'
 
 assets:
-  - 'assets/**/**/*'
-  - 'assets/**/*'
-  - 'assets/*'
+  - 'src/assets/**/**/*'
+  - 'src/assets/**/*'
+  - 'src/assets/*'
 
-static-assets:
-  - 'static/**/**/*'
-  - 'static/**/*'
-  - 'static/*'
-
-github-actions:
+github_actions:
   - '.github/*'
   - '.github/**/*'
 
 app-config: 
-  - nuxt.config.js
+  - *.config.js
 
 dependencies: 
   - package.json
