@@ -10,24 +10,28 @@ import Kontakt from "./views/Kontakt.vue";
 import NotFound from "./views/NotFound.vue";
 
 import LayoutApp from '@/layouts/LayoutApp.vue'
+import LayoutSite from '@/layouts/LayoutWebsite.vue'
+
+const loggedIn = JSON.parse((await window.cookieStore.get("__lafaburi-logged_in")).value)
+
+const ConditionalLayout = loggedIn ? LayoutApp : LayoutSite
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
   {
     path: "/",
-    component: LayoutApp,
+    component: ConditionalLayout,
     children: [
       {
         path: '',
         component: Home,
       },
     ],
-    meta: { title: "Home" }
   },
   {
     path: "/about",
     meta: { title: "About" },
-    component: LayoutApp,
+    component: ConditionalLayout,
     children: [
       {
         path: '',
@@ -47,7 +51,8 @@ export const routes = [
     ],
   },
   {
-    path: "/entwickler", component: LayoutApp,
+    path: "/entwickler",
+    component: ConditionalLayout,
     children: [
       {
         path: '',
@@ -55,11 +60,30 @@ export const routes = [
       },
     ],
   },
-  { path: "/faq", component: Profile },
-  { path: "/become/mod", component: BecomeMod },
-  { path: "/become/admin", component: BecomeAdmin },
-  { path: "/legals/policy", component: Policy },
-  { path: "/legals/gtc", component: Gtc },
-  { path: "/contact", component: Kontakt },
+  // {
+  //   path: "/faq",
+  //   component: ConditionalLayout,
+  //   children: [{ path: '', component: Faq }]
+  // },
+  {
+    path: "/become",
+    component: ConditionalLayout,
+    children: [
+      { path: 'moderator', component: BecomeMod },
+      { path: "admin", component: BecomeAdmin }],
+  },
+  {
+    path: "/legals",
+    component: ConditionalLayout,
+    children: [
+      { path: 'policy', component: Policy },
+      { path: 'gtc', component: Gtc }
+    ]
+  },
+  {
+    path: "/contact",
+    component: ConditionalLayout,
+    children: [{ path: '', component: Kontakt }]
+  },
   { path: "/:path(.*)", component: NotFound },
 ];
