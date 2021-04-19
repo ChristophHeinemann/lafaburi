@@ -1,0 +1,43 @@
+layout:
+  - 'src/layout/**/*'
+
+view:
+  - 'src/views/**/*'
+
+component:
+  - 'src/components/**/*'
+
+config:
+  - 'src/config/**/*'
+
+plugin:
+  - 'src/plugin/**/*'
+
+store:
+  - 'src/store/**/*'
+
+middleware:
+  - 'src/middleware/**/*'
+
+content:
+  - 'src/content/**/*'
+
+assets:
+  - 'src/assets/**/**/*'
+  - 'src/assets/**/*'
+  - 'src/assets/*'
+
+github_actions:
+  - '.github/*'
+  - '.github/**/*'
+
+app-config: 
+  - *.config.js
+
+dependencies: 
+  - package.json
+  - package-lock.json
+
+documentation: 
+  - README.md
+  - '**/README.md'
