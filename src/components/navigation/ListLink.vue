@@ -1,6 +1,6 @@
 <template>
-  <a
-    :href="item.href"
+  <router-link
+    :to="item.href"
     :class="[
       item.current
         ? 'bg-gray-200 text-gray-900'
@@ -22,7 +22,7 @@
     <span class="truncate">
       {{ item.name }}
     </span>
-  </a>
+  </router-link>
 </template>
 
 <script>

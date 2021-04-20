@@ -30,12 +30,8 @@ export const routes = [
   },
   {
     path: "/about",
-<<<<<<< HEAD
-    component: LayoutApp,
-=======
     meta: { title: "About" },
     component: ConditionalLayout,
->>>>>>> 08c0e43cd6dda6ed1f3c4ab6c144005237e45809
     children: [
       {
         path: '',
