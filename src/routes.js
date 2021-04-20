@@ -26,7 +26,6 @@ export const routes = [
   },
   {
     path: "/about",
-    meta: { title: "About" },
     component: LayoutApp,
     children: [
       {

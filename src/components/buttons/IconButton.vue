@@ -5,6 +5,7 @@
     } focus:outline-none active:bg-gray-200 mx-2 focus:ring-2 focus:ring-offset-2 focus:ring-${variant}-500`"
   >
     <component :is="icon" class="h-5 w-5" aria-hidden="true" />
+    <label v-if="label">{{ label }}</label>
   </button>
 </template>
 
@@ -15,6 +16,7 @@ export default {
   props: {
     icon: String,
     variant: String,
+    label: String,
   },
   components: {
     ...Solid,
