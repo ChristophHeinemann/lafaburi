@@ -35,7 +35,7 @@ const navigation = {
   main: [
     { name: "FAQ", href: "/FAQ" },
     { name: "Entwickler", href: "/Entwickler" },
-    { name: "Moderator werden", href: "/cecome/Mod" },
+    { name: "Moderator werden", href: "/become/Moderator" },
     { name: "Admin werden", href: "/become/Admin" },
     { name: "Datenschutz", href: "/legals/policy" },
     { name: "AGB", href: "/legals/agb" },
