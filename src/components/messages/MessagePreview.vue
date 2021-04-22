@@ -110,9 +110,7 @@ import IconButton from "@/components/buttons/IconButton.vue";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 
-import {
-  DotsVerticalIcon,
-} from "@heroicons/vue/solid";
+import { DotsVerticalIcon } from "@heroicons/vue/solid";
 
 export default {
   props: {

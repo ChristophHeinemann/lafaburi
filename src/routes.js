@@ -9,12 +9,15 @@ import Policy from "./views/legals/Policy.vue";
 import Kontakt from "./views/Kontakt.vue";
 import NotFound from "./views/NotFound.vue";
 
-import LayoutApp from '@/layouts/LayoutApp.vue'
-import LayoutSite from '@/layouts/LayoutWebsite.vue'
+import LayoutApp from "@/layouts/LayoutApp.vue";
+import LayoutSite from "@/layouts/LayoutWebsite.vue";
 
-const loggedIn = JSON.parse((await window.cookieStore.get("__lafaburi-logged_in")).value)
+const loggedInCookie = document.cookie.split(";").find(cookie => cookie.includes("__lafaburi-logged_in"))
+const loggedIn = loggedInCookie ? JSON.parse(loggedInCookie.split("=")[1]) : false
 
-const ConditionalLayout = loggedIn ? LayoutApp : LayoutSite
+console.log(loggedIn);
+
+const ConditionalLayout = loggedIn ? LayoutApp : LayoutSite;
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
@@ -23,7 +26,7 @@ export const routes = [
     component: ConditionalLayout,
     children: [
       {
-        path: '',
+        path: "",
         component: Home,
       },
     ],
@@ -34,7 +37,7 @@ export const routes = [
     component: ConditionalLayout,
     children: [
       {
-        path: '',
+        path: "",
         component: About,
       },
     ],
@@ -45,7 +48,7 @@ export const routes = [
     component: LayoutApp,
     children: [
       {
-        path: '',
+        path: "",
         component: Profile,
       },
     ],
@@ -55,35 +58,31 @@ export const routes = [
     component: ConditionalLayout,
     children: [
       {
-        path: '',
+        path: "",
         component: About,
       },
     ],
   },
-  // {
-  //   path: "/faq",
-  //   component: ConditionalLayout,
-  //   children: [{ path: '', component: Faq }]
-  // },
   {
     path: "/become",
     component: ConditionalLayout,
     children: [
-      { path: 'moderator', component: BecomeMod },
-      { path: "admin", component: BecomeAdmin }],
+      { path: "moderator", component: BecomeMod },
+      { path: "admin", component: BecomeAdmin },
+    ],
   },
   {
     path: "/legals",
     component: ConditionalLayout,
     children: [
-      { path: 'policy', component: Policy },
-      { path: 'gtc', component: Gtc }
-    ]
+      { path: "policy", component: Policy },
+      { path: "gtc", component: Gtc },
+    ],
   },
   {
     path: "/contact",
     component: ConditionalLayout,
-    children: [{ path: '', component: Kontakt }]
+    children: [{ path: "", component: Kontakt }],
   },
   { path: "/:path(.*)", component: NotFound },
 ];

@@ -112,12 +112,14 @@
         </div>
         <ul v-else class="space-y-4">
           <li
-            v-for="question in messages.messages"
-            :key="question.id"
+            v-for="message in messages"
+            :key="message.id"
             class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg"
           >
-            <MessagePreview :message="question" :author="question.author"></MessagePreview>
-            
+            <MessagePreview
+              :message="message"
+              :author="message.author"
+            ></MessagePreview>
           </li>
         </ul>
       </div>
@@ -336,9 +338,6 @@ export default {
     TrashIcon,
     MessagePreview,
   },
-  // mounted() {
-  //   this.fetchMessages();
-  // },
   setup() {
     useMeta({
       title: "My Example App",
@@ -352,8 +351,6 @@ export default {
     const messages = reactive(
       storage ? JSON.parse(storage) : { loading: true, messages: [] }
     );
-
-    console.log(messages);
 
     onMounted(() => {
       fetchMessages();
@@ -372,39 +369,14 @@ export default {
         .then((resp) => {
           messages.loading = false;
           messages.messages = resp.data;
+          localStorage.setItem("messages", messages);
         })
         .catch((error) => {
           console.error(error);
-          setTimeout(() => {
-            messages.loading = false;
-            messages.messages = [
-              {
-                id: "81614",
-                author: {
-                  name: "Dries Vincent",
-                  username: "Quatschkopf88",
-                  imageUrl:
-                    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-                  href: "#",
-
-                  usesExplicitContent: false,
-                },
-                date: "December 9 at 11:43 AM",
-                datetime: "2020-12-09T11:43:00",
-                supervisor: false,
-                request: false,
-                // title: "What would you have done differently if you ran Jurassic Park?",
-                body:
-                  "\n          <p>\n            Jurassic Park was an incredible idea and a magnificent feat of engineering, but poor protocols and a disregard for human safety killed what could have otherwise been one of the best businesses of our generation.\n          </p>\n          <p>\n            Ultimately, I think that if you wanted to run the park successfully and keep visitors safe, the most important thing to prioritize would be&hellip;\n          </p>\n        ",
-              },
-            ];
-            localStorage.setItem("messages", JSON.stringify(messages));
-          }, 5000);
         });
     };
 
     return {
-      // loading,
       tabs,
       messages,
       whoToFollow,
